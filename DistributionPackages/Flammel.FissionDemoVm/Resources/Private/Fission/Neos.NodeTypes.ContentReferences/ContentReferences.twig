@@ -1,0 +1,10 @@
+{{ props("node") }}
+<div {{ nodeRoot(this.node) }}>
+    {% for reference in this.node.prop("references") %}
+        {{ node(reference) }}
+    {% else %}
+        {% if backend().active %}
+            <p>{{ neos().translate("content.noReferencesSelected", "Neos.NodeTypes.ContentReferences", "NodeTypes/ContentReferences") }}</p>
+        {% endif %}
+    {% endfor %}
+</div>

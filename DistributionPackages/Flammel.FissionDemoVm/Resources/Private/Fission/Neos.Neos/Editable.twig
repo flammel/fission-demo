@@ -1,0 +1,28 @@
+{{ props("node", "property", ["isBlock", false]) }}
+{% if backend().active %}
+    {% if this.isBlock %}
+        <div
+            data-__neos-property="{{ this.property }}"
+            data-__neos-editable-node-contextpath="{{ this.node.contextPath }}"
+            class="neos-inline-editable"
+            property="typo3:{{ this.property }}"
+            data-neos-node-type="{{ this.node.nodeTypeName }}"
+        >
+            {{ this.node.prop(this.property) }}
+        </div>
+    {% else %}
+        <span
+            data-__neos-property="{{ this.property }}"
+            data-__neos-editable-node-contextpath="{{ this.node.contextPath }}"
+            class="neos-inline-editable"
+            property="typo3:{{ this.property }}"
+            data-neos-node-type="{{ this.node.nodeTypeName }}"
+        >
+                {{ this.node.prop(this.property) }}
+            </span>
+    {% endif %}
+{% else %}
+    {% slot "frontend" expose {"value": this.node.prop(this.property)} %}
+        {{ this.node.prop(this.property) }}
+    {% endslot %}
+{% endif %}

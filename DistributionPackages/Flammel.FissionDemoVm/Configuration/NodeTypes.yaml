@@ -1,0 +1,4 @@
+'Neos.Neos:Page':
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'

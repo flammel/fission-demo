@@ -1,0 +1,14 @@
+{{ props("node") }}
+<div {{ nodeRoot(this.node) }}>
+    <ul>
+        {% for asset in this.node.prop("assets") %}
+            <li>
+                <a href="{{ neos().resourceUri(asset.resource) }}">{{ asset.resource.filename }}</a>
+            </li>
+        {% else %}
+            {% if backend().active %}
+                <li>{{ neos().translate("content.emptyAssetList", "Neos.NodeTypes.AssetList", "NodeTypes/AssetList") }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

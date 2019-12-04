@@ -1,0 +1,9 @@
+{{ props("node") }}
+<div {{ nodeRoot(this.node) }}>
+    {{ component("Neos.NodeTypes:Image", this.node) }}
+    {% component "Neos.Neos:Editable" with {"node": this.node, "property": "text", "isBlock": true} %}
+        {% fill "frontend" %}
+            <p>{{ parent.value }}</p>
+        {% endfill %}
+    {% endcomponent %}
+</div>

@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "type": "neos-site",
+    "require": {
+        "neos/neos": "*",
+        "neos/nodetypes": "*"
+    },
+    "suggest": {
+        "neos/seo": "*"
+    },
+    "name": "flammel/fissiondemovm",
+    "autoload": {
+        "psr-4": {
+            "Flammel\\FissionDemoVm\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Flammel.FissionDemoVm"
+        }
+    }
+}

@@ -1,0 +1,6 @@
+{{ props("node", ["additionalClass", ""]) }}
+<div class="neos-contentcollection {{ this.additionalClass }}" {{ nodeRoot(this.node) }}>
+    {% for item in this.node.children %}
+        {{ node(item) }}
+    {% endfor %}
+</div>
