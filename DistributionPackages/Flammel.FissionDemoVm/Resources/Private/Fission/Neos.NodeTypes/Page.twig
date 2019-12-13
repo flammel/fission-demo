@@ -1,12 +1,13 @@
-{{ props("node") }}
+{% set node = props[0] %}
+
 {% component "Flammel.FissionDemoVm:Layout.Layout" %}
     {% fill "title" %}
-        {{ this.node.prop("title") }}
+        {{ node.prop("title") }}
     {% endfill %}
     {% fill "main" %}
         {{ component("Flammel.FissionDemoVm:Layout.Navbar") }}
         <div class="container-fluid">
-            {{ node(this.node.child("main")) }}
+            {{ node(node.child("main")) }}
         </div>
     {% endfill %}
 {% endcomponent %}

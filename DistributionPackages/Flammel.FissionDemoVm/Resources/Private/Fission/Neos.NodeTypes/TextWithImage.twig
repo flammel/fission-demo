@@ -1,7 +1,8 @@
-{{ props("node") }}
-<div {{ nodeRoot(this.node) }}>
-    {{ component("Neos.NodeTypes:Image", this.node) }}
-    {% component "Neos.Neos:Editable" with {"node": this.node, "property": "text", "isBlock": true} %}
+{% set node = props[0] %}
+
+<div {{ fission().nodeRoot(node) }}>
+    {{ component("Neos.NodeTypes:Image", node) }}
+    {% component "Neos.Neos:Editable" with {"node": node, "property": "text", "isBlock": true} %}
         {% fill "frontend" %}
             <p>{{ parent.value }}</p>
         {% endfill %}

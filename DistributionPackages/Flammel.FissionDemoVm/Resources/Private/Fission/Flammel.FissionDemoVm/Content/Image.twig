@@ -1,1 +1,3 @@
-<img src="{{ this.src }}" alt="{{ this.alt }}" title="{{ this.title }}"/>
+{% set img = demo().image(props[0]) %}
+
+<img src="{{ img.src }}" alt="{{ img.alt }}" title="{{ img.title }}"/>

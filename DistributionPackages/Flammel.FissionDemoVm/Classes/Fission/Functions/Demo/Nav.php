@@ -1,18 +1,12 @@
 <?php
-namespace Flammel\FissionDemoVm\Fission\Presenter;
+namespace Flammel\FissionDemoVm\Fission\Functions\Demo;
 
 use Flammel\Fission\Service\FissionContext;
 use Flammel\Fission\ValueObject\WrappedNode;
-use Flammel\Fission\Zweig\TemplatePath\NeosNamingConventionTemplatePath;
-use Flammel\Zweig\Component\ComponentArguments;
-use Flammel\Zweig\Component\ComponentContext;
-use Flammel\Zweig\Component\ComponentName;
-use Flammel\Zweig\Presenter\Presentable;
-use Flammel\Zweig\Presenter\Presenter;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
 
-class NavbarPresenter implements Presenter
+class Nav
 {
     /**
      * @Flow\Inject
@@ -21,16 +15,11 @@ class NavbarPresenter implements Presenter
     protected $fissionContext;
 
     /**
-     * @param ComponentName $name
-     * @param ComponentArguments $arguments
-     * @return Presentable
+     * @return array
      */
-    public function present(ComponentName $name, ComponentArguments $arguments): Presentable
+    public function getData()
     {
-        return new Presentable(
-            new NeosNamingConventionTemplatePath($name),
-            new ComponentContext(['elements' => $this->getElements()])
-        );
+        return ['elements' => $this->getElements()];
     }
 
     /**

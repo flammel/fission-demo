@@ -1,10 +1,11 @@
-{{ props("node") }}
-<div {{ nodeRoot(this.node) }}>
-    {% for reference in this.node.prop("references") %}
+{% set node = props[0] %}
+
+<div {{ fission().nodeRoot(node) }}>
+    {% for reference in node.prop("references") %}
         {{ node(reference) }}
     {% else %}
-        {% if backend().active %}
-            <p>{{ neos().translate("content.noReferencesSelected", "Neos.NodeTypes.ContentReferences", "NodeTypes/ContentReferences") }}</p>
+        {% if fission().backend().active %}
+            <p>{{ fission().translate("content.noReferencesSelected", "Neos.NodeTypes.ContentReferences", "NodeTypes/ContentReferences") }}</p>
         {% endif %}
     {% endfor %}
 </div>

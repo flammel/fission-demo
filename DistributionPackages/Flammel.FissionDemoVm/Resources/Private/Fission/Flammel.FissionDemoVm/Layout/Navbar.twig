@@ -1,27 +1,29 @@
+{% set elements = demo().nav().elements %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ neos().nodeUri(siteNode()) }}">{{ siteNode().prop("title") }}</a>
+    <a class="navbar-brand" href="{{ fission().nodeUri(fission().siteNode()) }}">{{ fission().siteNode().prop("title") }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            {% for element in this.elements %}
+            {% for element in elements %}
                 {% if element.children %}
                     <li class="nav-item dropdown {{ element.active ? 'active' : '' }}">
-                        <a class="nav-link dropdown-toggle" href="{{ neos().nodeUri(element.node) }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{{ fission().nodeUri(element.node) }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ element.node.prop("title") }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             {% for child in element.children %}
-                                <a class="dropdown-item {{ child.active ? 'active' : '' }}" href="{{ neos().nodeUri(child.node) }}">{{ child.node.prop("title") }}</a>
+                                <a class="dropdown-item {{ child.active ? 'active' : '' }}" href="{{ fission().nodeUri(child.node) }}">{{ child.node.prop("title") }}</a>
                             {% endfor %}
                         </div>
                     </li>
                 {% else %}
                     <li class="nav-item {{ element.active ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ neos().nodeUri(element.node) }}">
+                        <a class="nav-link" href="{{ fission().nodeUri(element.node) }}">
                             {{ element.node.prop("title") }}
                         </a>
                     </li>

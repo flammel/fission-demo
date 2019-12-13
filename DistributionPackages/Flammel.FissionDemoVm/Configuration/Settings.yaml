@@ -2,6 +2,5 @@ Flammel:
   Fission:
     templateDirectories:
       - Sites/Flammel.FissionDemoVm/Resources/Private/Fission
-    presenters:
-      'Flammel.FissionDemoVm:Layout.Navbar': 'Flammel\FissionDemoVm\Fission\Presenter\NavbarPresenter'
-      'Flammel.FissionDemoVm:Content.Image': 'Flammel\FissionDemoVm\Fission\Presenter\ImagePresenter'
+    functions:
+      demo: Flammel\FissionDemoVm\Fission\Functions\Demo

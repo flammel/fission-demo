@@ -1,6 +1,8 @@
-{{ props("node", ["additionalClass", ""]) }}
-<div class="neos-contentcollection {{ this.additionalClass }}" {{ nodeRoot(this.node) }}>
-    {% for item in this.node.children %}
+{% set node = props[0] %}
+{% set additionalClass = props[1]|default("") %}
+
+<div class="neos-contentcollection {{ additionalClass }}" {{ fission().nodeRoot(node) }}>
+    {% for item in node.children %}
         {{ node(item) }}
     {% endfor %}
 </div>

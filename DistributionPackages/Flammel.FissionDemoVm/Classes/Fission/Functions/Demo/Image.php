@@ -1,13 +1,7 @@
 <?php
-namespace Flammel\FissionDemoVm\Fission\Presenter;
+namespace Flammel\FissionDemoVm\Fission\Functions\Demo;
 
 use Flammel\Fission\Service\FissionContext;
-use Flammel\Fission\Zweig\TemplatePath\NeosNamingConventionTemplatePath;
-use Flammel\Zweig\Component\ComponentArguments;
-use Flammel\Zweig\Component\ComponentContext;
-use Flammel\Zweig\Component\ComponentName;
-use Flammel\Zweig\Presenter\Presentable;
-use Flammel\Zweig\Presenter\Presenter;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Routing\Exception\MissingActionNameException;
 use Neos\Media\Domain\Model\ThumbnailConfiguration;
@@ -15,7 +9,7 @@ use Neos\Media\Domain\Service\AssetService;
 use Neos\Media\Exception\AssetServiceException;
 use Neos\Media\Exception\ThumbnailServiceException;
 
-class ImagePresenter implements Presenter
+class Image
 {
     /**
      * @Flow\Inject
@@ -30,32 +24,18 @@ class ImagePresenter implements Presenter
     protected $fissionContext;
 
     /**
-     * @param ComponentName $name
-     * @param ComponentArguments $arguments
-     * @return Presentable
-     * @throws \Exception
-     */
-    public function present(ComponentName $name, ComponentArguments $arguments): Presentable
-    {
-        return new Presentable(
-            new NeosNamingConventionTemplatePath($name),
-            new ComponentContext($this->getContextData($arguments[0]))
-        );
-    }
-
-    /**
-     * @param array $arguments
+     * @param array $args
      * @return array
      * @throws AssetServiceException
      * @throws MissingActionNameException
      * @throws ThumbnailServiceException
      */
-    private function getContextData(array $arguments): array
+    public function getData(array $args): array
     {
         return [
-            'src' => $this->getSrc($arguments),
-            'alt' => $arguments['alt'] ?? '',
-            'title' => $arguments['title'] ?? ''
+            'src' => $this->getSrc($args),
+            'alt' => $args['alt'] ?? '',
+            'title' => $args['title'] ?? ''
         ];
     }
 

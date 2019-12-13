@@ -1,28 +1,31 @@
-{{ props("node", "property", ["isBlock", false]) }}
-{% if backend().active %}
-    {% if this.isBlock %}
+{% set node = props[0]|default(props["node"]|default(null)) %}
+{% set property = props[1]|default(props["property"]|default(null)) %}
+{% set isBlock = props[2]|default(props["isBlock"]|default(false)) %}
+
+{% if fission().backend().active %}
+    {% if isBlock %}
         <div
-            data-__neos-property="{{ this.property }}"
-            data-__neos-editable-node-contextpath="{{ this.node.contextPath }}"
+            data-__neos-property="{{ property }}"
+            data-__neos-editable-node-contextpath="{{ node.contextPath }}"
             class="neos-inline-editable"
-            property="typo3:{{ this.property }}"
-            data-neos-node-type="{{ this.node.nodeTypeName }}"
+            property="typo3:{{ property }}"
+            data-neos-node-type="{{ node.nodeTypeName }}"
         >
-            {{ this.node.prop(this.property) }}
+            {{ node.prop(property) }}
         </div>
     {% else %}
         <span
-            data-__neos-property="{{ this.property }}"
-            data-__neos-editable-node-contextpath="{{ this.node.contextPath }}"
+            data-__neos-property="{{ property }}"
+            data-__neos-editable-node-contextpath="{{ node.contextPath }}"
             class="neos-inline-editable"
-            property="typo3:{{ this.property }}"
-            data-neos-node-type="{{ this.node.nodeTypeName }}"
+            property="typo3:{{ property }}"
+            data-neos-node-type="{{ node.nodeTypeName }}"
         >
-                {{ this.node.prop(this.property) }}
+                {{ node.prop(property) }}
             </span>
     {% endif %}
 {% else %}
-    {% slot "frontend" expose {"value": this.node.prop(this.property)} %}
-        {{ this.node.prop(this.property) }}
+    {% slot "frontend" expose {"value": node.prop(property)} %}
+        {{ node.prop(property) }}
     {% endslot %}
 {% endif %}

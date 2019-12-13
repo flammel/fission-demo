@@ -1,4 +1,5 @@
-{{ props("node") }}
-<div {{ nodeRoot(this.node) }}>
-    {{ this.node.prop("source") }}
+{% set node = props[0] %}
+
+<div {{ fission().nodeRoot(node) }}>
+    {{ node.prop("source") }}
 </div>
