@@ -1,17 +1,17 @@
-{% set node = props[0] %}
+{% set node = props["node"] %}
 
 <div {{ fission().nodeRoot(node) }}>
     <figure>
-        {{ component("Flammel.FissionDemoVm:Content.Image", {
-            "asset": node.prop("image"),
-            "alt": node.prop("alternativeText"),
-            "title": node.prop("title"),
-            "width": 200,
-            "height": 200
-        }) }}
+        {{ component("Flammel.FissionDemoVm:Content.Image",
+            asset = node.prop("image"),
+            alt = node.prop("alternativeText"),
+            title = node.prop("title"),
+            width = 200,
+            height = 200
+        ) }}
         {% if node.prop("caption") %}
             <figcaption>
-                {{ component("Neos.Neos:Editable", node, "caption") }}
+                {{ component("Neos.Neos:Editable", node=node, property="caption") }}
             </figcaption>
         {% endif %}
     </figure>

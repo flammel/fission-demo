@@ -22,25 +22,25 @@ class Demo implements FissionFunction
     protected $nav;
 
     /**
-     * @param mixed ...$args
+     * @param array $args
      * @return mixed|void
      * @throws FissionException
      */
-    public function invoke(...$args)
+    public function invoke(array $args = [])
     {
         return $this;
     }
 
     /**
-     * @param array $args
+     * @param array $props
      * @return array
      * @throws \Neos\Flow\Mvc\Routing\Exception\MissingActionNameException
      * @throws \Neos\Media\Exception\AssetServiceException
      * @throws \Neos\Media\Exception\ThumbnailServiceException
      */
-    public function image(array $args): array
+    public function image(array $props): array
     {
-        return $this->image->getData($args);
+        return $this->image->getData($props);
     }
 
     /**

@@ -1,4 +1,4 @@
-{% set node = props[0] %}
+{% set node = props["node"] %}
 
 <div {{ fission().nodeRoot(node) }}>
     {% for reference in node.prop("references") %}

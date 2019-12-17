@@ -1,6 +1,6 @@
-{% set node = props[0]|default(props["node"]|default(null)) %}
-{% set property = props[1]|default(props["property"]|default(null)) %}
-{% set isBlock = props[2]|default(props["isBlock"]|default(false)) %}
+{% set node = props["node"] %}
+{% set property = props["property"] %}
+{% set isBlock = props["isBlock"]|default(false) %}
 
 {% if fission().backend().active %}
     {% if isBlock %}

@@ -1,5 +1,5 @@
-{% set node = props[0] %}
+{% set node = props["node"] %}
 
 <div {{ fission().nodeRoot(node) }}>
-    {{ component("Neos.Neos:Editable", node, "title", true) }}
+    {{ component("Neos.Neos:Editable", node=node, property="title", isBlock=true) }}
 </div>
