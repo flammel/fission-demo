@@ -6,8 +6,8 @@
             asset = node.prop("image"),
             alt = node.prop("alternativeText"),
             title = node.prop("title"),
-            width = 200,
-            height = 200
+            width = props.width|default(200),
+            height = props.height|default(200)
         ) }}
         {% if node.prop("caption") %}
             <figcaption>

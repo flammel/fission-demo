@@ -2,3 +2,12 @@
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
+'Flammel.FissionDemoVm:TextWithImage':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.NodeTypes:TextMixin': true
+    'Neos.NodeTypes:ContentImageMixin': true
+  ui:
+    label: 'Text with Image (Fission)'
+    icon: 'icon-picture'
+    position: 400

@@ -4,6 +4,7 @@ namespace Flammel\FissionDemoVm\Fission\Functions\Demo;
 use Flammel\Fission\Service\FissionContext;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Routing\Exception\MissingActionNameException;
+use Neos\Media\Domain\Model\AssetInterface;
 use Neos\Media\Domain\Model\ThumbnailConfiguration;
 use Neos\Media\Domain\Service\AssetService;
 use Neos\Media\Exception\AssetServiceException;
@@ -48,9 +49,13 @@ class Image
      */
     private function getSrc(array $arguments): string
     {
+        $asset = $arguments['asset'];
+        if (!$asset instanceof AssetInterface) {
+            return '';
+        }
         $config = $this->getThumbnailConfiguration($arguments);
         $request = $this->fissionContext->getActionRequest();
-        $sizeAndUri = $this->assetService->getThumbnailUriAndSizeForAsset($arguments['asset'], $config, $request);
+        $sizeAndUri = $this->assetService->getThumbnailUriAndSizeForAsset($asset, $config, $request);
         return $sizeAndUri['src'];
     }
 

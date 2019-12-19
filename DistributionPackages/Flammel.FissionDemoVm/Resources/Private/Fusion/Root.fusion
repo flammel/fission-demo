@@ -1,0 +1,8 @@
+prototype(Flammel.FissionDemoVm:TextWithImage) < prototype(Neos.Fusion:Component) {
+    renderer = afx`
+        <div class="fission-text-with-image">
+            <Flammel.Fission:Component component="Neos.NodeTypes:Text" node={node} />
+            <Flammel.Fission:Component component="Neos.NodeTypes:Image" node={node} width="500" height="500" />
+        </div>
+    `
+}
