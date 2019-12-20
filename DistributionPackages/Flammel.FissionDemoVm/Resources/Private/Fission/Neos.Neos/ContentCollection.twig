@@ -1,5 +1,5 @@
-{% set node = props["node"] %}
-{% set additionalClass = props["additionalClass"]|default("") %}
+{% set node = props.node %}
+{% set additionalClass = props.additionalClass|default("") %}
 
 <div class="neos-contentcollection {{ additionalClass }}" {{ fission().nodeRoot(node) }}>
     {% for item in node.children %}

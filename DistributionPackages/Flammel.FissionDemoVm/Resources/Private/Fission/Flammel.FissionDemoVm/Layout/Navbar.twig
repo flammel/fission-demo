@@ -1,4 +1,4 @@
-{% set elements = demo().nav().elements %}
+{% set nav = demo().nav(props.document_node) %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ fission().nodeUri(fission().siteNode()) }}">{{ fission().siteNode().prop("title") }}</a>
@@ -8,7 +8,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            {% for element in elements %}
+            {% for element in nav.elements %}
                 {% if element.children %}
                     <li class="nav-item dropdown {{ element.active ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="{{ fission().nodeUri(element.node) }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

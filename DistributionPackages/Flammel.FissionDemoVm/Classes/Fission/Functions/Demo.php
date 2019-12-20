@@ -3,11 +3,13 @@ namespace Flammel\FissionDemoVm\Fission\Functions;
 
 use Flammel\Fission\Exception\FissionException;
 use Flammel\Fission\Functions\FissionFunction;
+use Flammel\Fission\ValueObject\WrappedNode;
 use Flammel\FissionDemoVm\Fission\Functions\Demo\Image;
 use Flammel\FissionDemoVm\Fission\Functions\Demo\Nav;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
 
-class Demo implements FissionFunction
+class Demo
 {
     /**
      * @Flow\Inject
@@ -23,10 +25,9 @@ class Demo implements FissionFunction
 
     /**
      * @param array $args
-     * @return mixed|void
-     * @throws FissionException
+     * @return $this
      */
-    public function invoke(array $args = [])
+    public function __invoke(array $args = [])
     {
         return $this;
     }
@@ -44,10 +45,11 @@ class Demo implements FissionFunction
     }
 
     /**
+     * @param WrappedNode $documentNode
      * @return array
      */
-    public function nav()
+    public function nav(WrappedNode $documentNode)
     {
-        return $this->nav->getData();
+        return $this->nav->getData($documentNode);
     }
 }

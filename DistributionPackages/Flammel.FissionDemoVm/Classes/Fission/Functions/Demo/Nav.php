@@ -15,20 +15,21 @@ class Nav
     protected $fissionContext;
 
     /**
+     * @param WrappedNode $documentNode
      * @return array
      */
-    public function getData()
+    public function getData(WrappedNode $documentNode)
     {
-        return ['elements' => $this->getElements()];
+        return ['elements' => $this->getElements($documentNode->unwrap())];
     }
 
     /**
+     * @param NodeInterface $document
      * @return array
      */
-    private function getElements(): array
+    private function getElements(NodeInterface $document): array
     {
         $site = $this->fissionContext->getSiteNode();
-        $document = $this->fissionContext->getDocumentNode();
         $elements = [];
         /** @var NodeInterface $child */
         foreach ($site->findChildNodes() as $child) {

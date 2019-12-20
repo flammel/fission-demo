@@ -1,13 +1,13 @@
-{% set node = props["node"] %}
+{% set documentNode = props.node %}
 
-{% component "Flammel.FissionDemoVm:Layout.Layout" %}
+{% component "Flammel.FissionDemoVm:Layout.Layout" with {"documentNode": documentNode} %}
     {% fill "title" %}
-        {{ node.prop("title") }}
+        {{ documentNode.prop("title") }}
     {% endfill %}
     {% fill "main" %}
-        {{ component("Flammel.FissionDemoVm:Layout.Navbar") }}
+        {{ component("Flammel.FissionDemoVm:Layout.Navbar", documentNode=documentNode) }}
         <div class="container-fluid">
-            {{ node(node.child("main")) }}
+            {{ node(documentNode.child("main")) }}
         </div>
     {% endfill %}
 {% endcomponent %}

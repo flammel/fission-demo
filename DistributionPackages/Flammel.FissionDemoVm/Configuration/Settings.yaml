@@ -3,4 +3,4 @@ Flammel:
     templateDirectories:
       - Sites/Flammel.FissionDemoVm/Resources/Private/Fission
     functions:
-      demo: Flammel\FissionDemoVm\Fission\Functions\Demo
+      demo: [Flammel\FissionDemoVm\Fission\Functions\Demo, '__invoke']

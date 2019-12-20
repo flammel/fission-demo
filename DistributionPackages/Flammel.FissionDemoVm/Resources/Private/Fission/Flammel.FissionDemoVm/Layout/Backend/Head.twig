@@ -1,0 +1,8 @@
+{% if fission().backend().active %}
+    {{ fission().backend().documentInformation(props.document_node) }}
+    <script src="/_Resources/Static/Packages/Neos.Neos.Ui.Compiled/JavaScript/Vendor.js"></script>
+    <script src="/_Resources/Static/Packages/Neos.Neos.Ui/Plugins/ckeditor/ckeditor.js"></script>
+    <script src="/_Resources/Static/Packages/Neos.Neos.Ui.Compiled/JavaScript/Guest.js"></script>
+    <link rel="stylesheet" href="/_Resources/Static/Packages/Neos.Neos.Ui.Compiled/Styles/Host.css" />
+    <script>window.neos = window.parent.neos;</script>
+{% endif %}
